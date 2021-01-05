@@ -6,10 +6,10 @@
     <select id="getDeptById" resultType="com.atguigu.springboot.bean.Department">
         select id,department_name from department where id = #{id}
     </select>
-    <insert id="insertDept">
+    <insert id="insertDept" useGeneratedKeys="true" keyProperty="id" parameterType="com.atguigu.springboot.bean.Department">
         INSERT INTO department(department_name) VALUES (#{departmentName})
     </insert>
-    <update id="updateDept" >
+    <update id="updateDept" keyProperty="id">
         UPDATE department SET department_name=#{departmentName} WHERE id=#{id}
     </update>
     <delete id="deleteDeptById">

@@ -4,15 +4,8 @@ import com.atguigu.springboot.bean.Department;
 import com.atguigu.springboot.bean.Employee;
 import com.atguigu.springboot.mapper.DepartmentMapper;
 import com.atguigu.springboot.mapper.EmployeeMapper;
-import org.springframework.beans.factory.annotation.AnnotatedGenericBeanDefinition;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class DeptController {
@@ -28,8 +21,9 @@ public class DeptController {
         return departmentMapper.getDeptById(id);
     }
 
-    @GetMapping("/dept")
-    public Department insertDept(Department department){
+//    @GetMapping("/dept")
+    @PostMapping("/dept")
+    public Department insertDept(@RequestBody Department department){
         departmentMapper.insertDept(department);
         return department;
     }
